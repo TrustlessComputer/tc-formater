@@ -68,7 +68,7 @@ const formatAmount = (payload) => {
     let formatedAmount;
     try {
         const convertHumanAmount = humanAmount ||
-            convert.toHumanAmount({
+            toHumanAmount({
                 originalAmount,
                 decimals,
             });
@@ -134,7 +134,7 @@ const getDecimalsFromHumanAmount = (humanAmount, defaultDecimals) => {
 };
 const shorterAmount = ({ originalAmount, decimals, }) => {
     try {
-        const _amount = convert.toHumanAmount({ originalAmount, decimals });
+        const _amount = toHumanAmount({ originalAmount, decimals });
         const _decimals = getDecimalsFromHumanAmount(_amount, decimals);
         return _amount
             ? removeTrailingZeroes({
@@ -146,17 +146,6 @@ const shorterAmount = ({ originalAmount, decimals, }) => {
         return '0';
     }
 };
-const format = {
-    formatAmount,
-    number,
-    toFixed,
-    shorterAmount,
-};
-
-var format$1 = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    'default': format
-});
 
 const checkAmount = (amount) => {
     if (!Number.isFinite(amount))
@@ -179,7 +168,7 @@ const toHumanAmount = (payload) => {
     return amount.dividedBy(indexNumber).toNumber();
 };
 const toHumanAmountString = (payload) => {
-    return format.toFixed({
+    return toFixed({
         number: toHumanAmount({
             originalAmount: payload.originalAmount || 0,
             decimals: payload.decimals,
@@ -223,25 +212,6 @@ const toString = ({ text, autoCorrect = true, }) => {
     });
     return new BigNumber(number).toString();
 };
-const convert = {
-    checkAmount,
-    replaceDecimals,
-    toHumanAmount,
-    toHumanAmountString,
-    toOriginalAmount,
-    toNumber,
-    toString,
-};
 
-var convert$1 = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    'default': convert
-});
-
-const amount = {
-    convert: convert$1,
-    format: format$1,
-};
-
-export { amount };
+export { checkAmount, formatAmount, number, replaceDecimals, shorterAmount, toFixed, toHumanAmount, toHumanAmountString, toNumber, toOriginalAmount, toString };
 //# sourceMappingURL=tc-formatter-package.js.map

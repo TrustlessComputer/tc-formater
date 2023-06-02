@@ -1,7 +1,7 @@
 import { IHumanAmount, IReplaceDecimals } from '@/types/amount';
 import { getDecimalSeparator } from '@/lib/amount/separator';
 import { BigNumber } from 'bignumber.js';
-import format from '@/lib/amount/format';
+import { toFixed } from '@/lib/amount/format';
 
 const checkAmount = (amount: number) => {
   if (!Number.isFinite(amount))
@@ -37,7 +37,7 @@ const toHumanAmount = (payload: IHumanAmount) => {
 };
 
 const toHumanAmountString = (payload: IHumanAmount) => {
-  return format.toFixed({
+  return toFixed({
     number: toHumanAmount({
       originalAmount: payload.originalAmount || 0,
       decimals: payload.decimals,
@@ -104,7 +104,7 @@ const toString = ({
   return new BigNumber(number).toString();
 };
 
-const convert = {
+export {
   checkAmount,
   replaceDecimals,
   toHumanAmount,
@@ -113,5 +113,3 @@ const convert = {
   toNumber,
   toString,
 };
-
-export default convert;

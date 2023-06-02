@@ -1,6 +1,6 @@
 import { BigNumber } from 'bignumber.js';
 import { getDecimalSeparator, getGroupSeparator } from '@/lib/amount/separator';
-import convertAmount from '@/lib/amount/convert';
+import { toHumanAmount } from '@/lib/amount/convert';
 import { IAmount, IMaxDigits, IShorterAmount, IToFixed } from '@/types/amount';
 
 const removeTrailingZeroes = ({ amountString }: { amountString: string }) => {
@@ -76,7 +76,7 @@ const formatAmount = (payload: IAmount) => {
   try {
     const convertHumanAmount =
       humanAmount ||
-      convertAmount.toHumanAmount({
+      toHumanAmount({
         originalAmount,
         decimals,
       });
@@ -155,7 +155,7 @@ const shorterAmount = ({
   decimals,
 }: IShorterAmount): string => {
   try {
-    const _amount = convertAmount.toHumanAmount({ originalAmount, decimals });
+    const _amount = toHumanAmount({ originalAmount, decimals });
     const _decimals = getDecimalsFromHumanAmount(_amount, decimals);
     return _amount
       ? removeTrailingZeroes({
@@ -169,11 +169,5 @@ const shorterAmount = ({
     return '0';
   }
 };
-const format = {
-  formatAmount,
-  number,
-  toFixed,
-  shorterAmount,
-};
 
-export default format;
+export { formatAmount, number, toFixed, shorterAmount };
