@@ -238,7 +238,10 @@ var convert$1 = /*#__PURE__*/Object.freeze({
     'default': convert
 });
 
-const amount = Object.assign(Object.assign({}, convert$1), format$1);
+const amount = {
+    convert: convert$1,
+    format: format$1,
+};
 
 export { amount };
 //# sourceMappingURL=tc-formatter-package.js.map

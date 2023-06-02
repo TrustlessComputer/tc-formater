@@ -1,1 +1,1 @@
-export * from './amount';
+export { default as amount } from './amount';

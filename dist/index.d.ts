@@ -1,12 +1,3 @@
-export declare const amount: {
-    default: {
-        formatAmount: (payload: IAmount) => string;
-        number: (num: number) => string | number;
-        toFixed: (payload: IToFixed) => string;
-        shorterAmount: ({ originalAmount, decimals, }: IShorterAmount) => string;
-    };
-};
-
 export declare interface IAmount {
     originalAmount?: number | string;
     humanAmount?: number;

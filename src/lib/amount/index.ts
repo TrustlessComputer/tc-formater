@@ -2,8 +2,8 @@ import * as convert from './convert';
 import * as format from './format';
 
 const amount = {
-  ...convert,
-  ...format,
+  convert,
+  format,
 };
 
-export { amount };
+export default amount;
