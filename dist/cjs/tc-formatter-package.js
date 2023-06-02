@@ -217,11 +217,36 @@ const toString = ({ text, autoCorrect = true, }) => {
     return new bignumber_js.BigNumber(number).toString();
 };
 
+const ellipsisCenter = (payload) => {
+    const { str, limit = 6, start = 0, end = 0, dots = '...' } = payload;
+    try {
+        const size = str.length;
+        if (size < (start && end ? start + end : limit * 2) + dots.length) {
+            return str;
+        }
+        const leftStr = str.substring(0, start || limit);
+        const rightStr = str.substring(size - (end || limit), size);
+        return leftStr + dots + rightStr;
+    }
+    catch (_a) {
+        return str;
+    }
+};
+const startAddress = ({ address, length = 10 }) => {
+    if (!address)
+        return '';
+    if (address.length < 14)
+        return address;
+    return `${address.substring(0, length)}`;
+};
+
 exports.checkAmount = checkAmount;
+exports.ellipsisCenter = ellipsisCenter;
 exports.formatAmount = formatAmount;
 exports.number = number;
 exports.replaceDecimals = replaceDecimals;
 exports.shorterAmount = shorterAmount;
+exports.startAddress = startAddress;
 exports.toFixed = toFixed;
 exports.toHumanAmount = toHumanAmount;
 exports.toHumanAmountString = toHumanAmountString;

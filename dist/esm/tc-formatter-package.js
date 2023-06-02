@@ -213,5 +213,28 @@ const toString = ({ text, autoCorrect = true, }) => {
     return new BigNumber(number).toString();
 };
 
-export { checkAmount, formatAmount, number, replaceDecimals, shorterAmount, toFixed, toHumanAmount, toHumanAmountString, toNumber, toOriginalAmount, toString };
+const ellipsisCenter = (payload) => {
+    const { str, limit = 6, start = 0, end = 0, dots = '...' } = payload;
+    try {
+        const size = str.length;
+        if (size < (start && end ? start + end : limit * 2) + dots.length) {
+            return str;
+        }
+        const leftStr = str.substring(0, start || limit);
+        const rightStr = str.substring(size - (end || limit), size);
+        return leftStr + dots + rightStr;
+    }
+    catch (_a) {
+        return str;
+    }
+};
+const startAddress = ({ address, length = 10 }) => {
+    if (!address)
+        return '';
+    if (address.length < 14)
+        return address;
+    return `${address.substring(0, length)}`;
+};
+
+export { checkAmount, ellipsisCenter, formatAmount, number, replaceDecimals, shorterAmount, startAddress, toFixed, toHumanAmount, toHumanAmountString, toNumber, toOriginalAmount, toString };
 //# sourceMappingURL=tc-formatter-package.js.map
