@@ -1,9 +1,9 @@
 # dependencies
 node_modules
+.idea
 
 # production
 build
-dist
 docs
 
 # debug
