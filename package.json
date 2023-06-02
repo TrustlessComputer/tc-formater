@@ -1,10 +1,10 @@
 {
-  "name": "tc-formater",
+  "name": "tc-formatter",
   "version": "0.0.1",
   "homepage": "https://github.com/TrustlessComputer",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TrustlessComputer/tc-formater"
+    "url": "https://github.com/TrustlessComputer/tc-formatter"
   },
   "license": "ISC",
   "keywords": [
@@ -13,9 +13,9 @@
     "package",
     "boilerplate"
   ],
-  "main": "dist/cjs/tc-formater-package.js",
-  "module": "dist/esm/tc-formater-package.js",
-  "browser": "dist/browser/tc-formater-package.js",
+  "main": "dist/cjs/tc-formatter-package.js",
+  "module": "dist/esm/tc-formatter-package.js",
+  "browser": "dist/browser/tc-formatter-package.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"

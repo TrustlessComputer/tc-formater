@@ -249,4 +249,4 @@
     Object.defineProperty(exports, '__esModule', { value: true });
 
 }));
-//# sourceMappingURL=tc-formater-package.js.map
+//# sourceMappingURL=tc-formatter-package.js.map
